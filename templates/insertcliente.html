@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block titulo %}Agregar Material{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h3>Agregar Material</h3>
+    <form action="{{url_for('save_client')}}" method="POST">
+        <label for="codmat">Cedula o Nit</label>
+        <input type="text" required class="form-control" placeholder="Ingrese Código" name="ccnit" id="ccnit">
+        <label for="name">Nombre</label>
+        <input type="text" required class="form-control" placeholder="Ingrese nombre" name="nombre" id="nombre">
+        <label for="name">Telefono</label>
+        <input type="number" required class="form-control" placeholder="Ingrese telefono" name="telefono" id="telefono">
+        <label for="coste">Direccion</label>
+        <input type="text" required class="form-control" placeholder="Ingrese direccion" name="direccion" id="direccion">
+        <label for="coste">Estado</label>
+        <input type="text" required class="form-control" placeholder="Ingrese estado (1 = true / 2 = false)" name="estado" id="estado">
+        <br>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{{url_for('clientes')}}" class="btn btn-primary">Regresar</a>
+    </form>
+</div>
+{% endblock %}
