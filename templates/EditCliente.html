@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block titulo %}Editar Cliente{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h3>Editar</h3>
+    <form action="{{url_for('update_cliente')}}" method="POST">
+        <input type="hidden" id="id" name="id" value="{{cliente[0]}}">
+        <label for="codmat">Cedula o Nit</label>
+        <input type="text" required class="form-control" placeholder="Ingrese Código" name="ccnit" id="ccnit" value="{{cliente[1]}}">
+        <label for="name">Nombre</label>
+        <input type="text" required class="form-control" placeholder="Ingrese nombre" name="nombre" id="nombre" value="{{cliente[2]}}">
+        <label for="name">Telefono</label>
+        <input type="number" required class="form-control" placeholder="Ingrese telefono" name="telefono" id="telefono" value="{{cliente[3]}}">
+        <label for="coste">Direccion</label>
+        <input type="text" required class="form-control" placeholder="Ingrese direccion" name="direccion" id="direccion" value="{{cliente[4]}}">
+        <label for="coste">Estado</label>
+        <input type="text" required class="form-control" placeholder="Ingrese estado (1 = true / 2 = false)" name="estado" id="estado" value="{{cliente[5]}}">
+        <br>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{{url_for('clientes')}}" class="btn btn-primary">Regresar</a>
+    </form>
+</div>
+{% endblock %}

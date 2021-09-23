@@ -17,3 +17,29 @@ def get_clientes():
         Clientes = cursor.fetchall()
     cnx.close()
     return Clientes
+
+
+def delete_clientes():
+    cnx = getConnection()
+    with cnx.cursor() as cursor:
+        cursor.execute("DELETE FROM cliente WHERE estado = '0' or NOT EXISTS(SELECT * FROM factura WHERE ccnit = cliente.ccnit)")
+    cnx.commit()
+    cnx.close()
+
+
+def get_cliente_id(id):
+    cnx = getConnection()
+    cliente = None
+    with cnx.cursor() as cursor:
+        cursor.execute("SELECT id, ccnit, nombre, telefono, direccion, estado FROM cliente WHERE id = %s",(id))
+        cliente = cursor.fetchone()
+    cnx.close()
+    return cliente
+
+
+def update_cliente(ccnit, nombre, telefono, direccion, estado, id):
+    cnx = getConnection()
+    with cnx.cursor() as cursor:
+        cursor.execute("UPDATE cliente SET ccnit = %s, nombre = %s, telefono = %s, direccion = %s , estado = %s WHERE id = %s",(ccnit, nombre, telefono, direccion, estado, id))
+    cnx.commit()
+    cnx.close()
