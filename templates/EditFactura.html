@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block titulo %}Agregar Material{% endblock %}
+{% block contenido %}
+<div class="container">
+    <h3>Editar Factura</h3>
+    <form action="{{url_for('update_factura')}}" method="POST">
+        <label for="nrofact"> # Factura</label>
+        <input type="hidden" id="nrofact" name="nrofact" value="{{factura[0]}}">
+        <input type="text" required class="form-control" id="nrofact" name="nrofact" value="{{factura[0]}}" disabled>
+        <label for="ccnit">Cedula o Nit</label>
+        <input type="hidden" required class="form-control" placeholder="Ingrese Código" name="ccnit" id="ccnit" >
+        <input type="text" required class="form-control" placeholder="Ingrese Código" name="ccnit" id="ccnit" value="{{factura[1]}}" disabled>
+        <label for="fecha">fecha</label>
+        <input type="date" required class="form-control" placeholder="Ingrese fecha" name="fecha" id="fecha" value="{{factura[2]}}">
+        <label for="valor">valor</label>
+        <input type="number" required class="form-control" placeholder="Ingrese valor" name="valor" id="valor" value="{{factura[3]}}">
+        <label for="saldo">saldo</label>
+        <input type="number" required class="form-control" placeholder="Ingrese saldo" name="saldo" id="saldo" value="{{factura[4]}}">
+                
+        <br>
+        <button type="submit" class="btn btn-success"><box-icon type='solid' name='save' size="lg"></box-icon></button>
+        <a href="{{url_for('facturas')}}" class="btn btn-primary"><box-icon name='arrow-back' size="lg"></box-icon></a>
+    </form>
+</div>
+{% endblock %}

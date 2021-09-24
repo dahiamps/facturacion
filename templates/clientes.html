@@ -3,7 +3,8 @@
 {% block contenido %}
 <div class="container">
     <h3>Clientes</h3>
-    <a href="{{url_for('form_insert_material')}}" class="btn btn-primary">Agregar</a>
+    <a href="{{url_for('form_insert_material')}}" class="btn btn-primary"><box-icon name='add-to-queue' type='solid' size="lg"></box-icon></a>
+    <a href="{{url_for('facturas')}}" class="btn btn-primary" ><box-icon name='clipboard' size="lg"></box-icon> </a>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -28,12 +29,13 @@
                 <td>{{cliente[5]}}</td>
 
                 <td>
-                    <a href="{{url_for('form_edit_cliente',id=cliente[0])}}" class="btn btn-success">Editar</a>
+                    <a href="{{url_for('form_edit_cliente',id=cliente[0])}}" class="btn btn-success"><box-icon name='edit'></box-icon></a>
                 </td>
                 <td>
                     <form action="{{url_for('delete_cliente')}}" method="POST"
                         onSubmit="return confirm('Está seguro de eliminar este cliente?');">
-                        <button class="btn btn-danger">Eliminar</button>
+
+                        <button class="btn btn-danger"><box-icon name='user-x' type='solid'></box-icon></button>
                     </form>
                 </td>
             </tr>

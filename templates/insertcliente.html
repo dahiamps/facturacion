@@ -13,10 +13,10 @@
         <label for="coste">Direccion</label>
         <input type="text" required class="form-control" placeholder="Ingrese direccion" name="direccion" id="direccion">
         <label for="coste">Estado</label>
-        <input type="text" required class="form-control" placeholder="Ingrese estado (1 = true / 2 = false)" name="estado" id="estado">
+        <input type="text" required class="form-control" placeholder="Ingrese estado (1 = activo / 0 = desactivado)" name="estado" id="estado">
         <br>
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <a href="{{url_for('clientes')}}" class="btn btn-primary">Regresar</a>
+        <button type="submit" class="btn btn-success"><box-icon type='solid' name='save' size="lg"></box-icon></button>
+        <a href="{{url_for('clientes')}}" class="btn btn-primary"><box-icon name='arrow-back' size="lg"></box-icon></a>
     </form>
 </div>
 {% endblock %}

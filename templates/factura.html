@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block titulo %} Facturas {% endblock %}
+{% block contenido %}
+<div class="container">
+    <h3>Facturas Registradas</h3>
+    <a href="{{url_for('form_insert_factura')}}" class="btn btn-primary"><box-icon name='add-to-queue' type='solid' size="lg"></box-icon></a>
+    <a href="{{url_for('clientes')}}" class="btn btn-primary"><box-icon name='user' type='solid' size="lg"></box-icon></a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>nrofact </th>
+                <th>CC / Nit</th>
+                <th>fecha </th>
+                <th>valor </th>
+                <th>saldo </th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for factura in Facturas %}
+            <tr>
+                <td>{{factura[0]}}</td>
+                <td>{{factura[1]}}</td>
+                <td>{{factura[2]}}</td>
+                <td>{{factura[3]}}</td>
+                <td>{{factura[4]}}</td>
+
+                <td>
+                    <a href="{{url_for('form_edit_factura',nrofact=factura[0])}}" class="btn btn-success"><box-icon name='edit'></box-icon></a>
+                </td>
+                <td>
+                    <form action="{{url_for('delete_factura')}}" method="POST"
+                        onSubmit="return confirm('Está seguro de eliminar este cliente?');">
+                        <input type="hidden" name="nrofact" value="{{factura[0]}}">
+
+                        <button class="btn btn-danger"><box-icon type='solid' name='trash'></box-icon></button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}
